@@ -1,0 +1,20 @@
+{
+    "namespace": "SVSTestModule",
+    "items": {
+        "includes": [
+          {
+            "allowedPushOperations": "createUpdateAndDelete",
+            "name": "care include",
+            "path": "/sitecore/content/sites/sxastarter/Home/Care",
+            "scope": "itemAndDescendants",
+            "rules": [
+                {
+                  "path": "/light",
+                  "scope": "ignored"
+                }
+              ]
+           
+          }
+        ]
+      }
+}

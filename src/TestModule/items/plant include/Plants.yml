@@ -1,0 +1,37 @@
+﻿---
+ID: "0f5fdd1e-ae36-4b37-b9b0-6996ffe544dd"
+Parent: "1d8e6aff-dbbc-46ef-9d6a-801b8f35cec9"
+Template: "9b86e732-72dd-428f-9259-2c0110ef4d3e"
+Path: /sitecore/content/sites/sxastarter/Home/Plants
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 150
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{2DFE6C03-F5B9-4598-A16C-AD1D7CA8AB57}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240528T210841Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Plants
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "91d9650c-c748-4add-b067-4a6710873d15"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\edimech@getfishtank.ca
+    - ID: "c1916c27-6124-4151-bcb6-81fea891f6d7"
+      Hint: Title
+      Value: Plants
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240529T135912Z

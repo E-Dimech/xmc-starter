@@ -59,6 +59,18 @@ services:
         source: .\docker\data\solr
         target: c:\data
 
+  # id:
+  #   image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest} 
+  #   build:
+  #     context: ./docker/build/id
+  #     args:
+  #       PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-id:${SITECORE_VERSION}
+      # volumes:
+      #   - ${HOST_LICENSE_FOLDER}:c:\license
+      # environment:
+      #   SITECORE_LICENSE_LOCATION: c:\license\license.xml
+      #   Sitecore_Sitecore__IdentityServer__Clients__MyProjectDevelopment__ClientSecrets__ClientSecret1: ${MYPROJECT_DEPLOYMENT_SECRET}
+
   # Use our custom CM image with added modules and solution code.
   # Folders are mounted below for code deployment and log output. See Dockerfile for details.
   # Configure for a mounted license file instead of using SITECORE_LICENSE.
