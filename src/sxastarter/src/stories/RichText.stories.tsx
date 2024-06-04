@@ -78,7 +78,7 @@ export const LongContent: Story = {
     },
     fields: {
       Text: {
-        value: '<p>' + 'This is a very long content test. '.repeat(100) + '</p>',
+        value: '<p>' + 'This is a very long RichText test. '.repeat(100) + '</p>',
       },
     },
   },
