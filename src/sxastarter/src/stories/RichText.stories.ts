@@ -26,3 +26,79 @@ export const Default: Story = {
     },
   },
 };
+
+export const WithContent: Story = {
+  args: {
+    rendering: {
+      componentName: 'RichText',
+      params: {
+        RenderingIdentifier: 'RichTextRenderingIdentifier',
+      },
+    },
+    params: {
+      styles: '',
+    },
+    fields: {
+      Text: {
+        value: '<p>This is a rich text content example.</p>',
+      },
+    },
+  },
+};
+
+export const EmptyContent: Story = {
+  args: {
+    rendering: {
+      componentName: 'RichText',
+      params: {
+        RenderingIdentifier: 'RichTextRenderingIdentifier',
+      },
+    },
+    params: {
+      styles: '',
+    },
+    fields: {
+      Text: {
+        value: '',
+      },
+    },
+  },
+};
+
+export const LongContent: Story = {
+  args: {
+    rendering: {
+      componentName: 'RichText',
+      params: {
+        RenderingIdentifier: 'RichTextRenderingIdentifier',
+      },
+    },
+    params: {
+      styles: '',
+    },
+    fields: {
+      Text: {
+        value: '<p>' + 'This is a very long content test. '.repeat(100) + '</p>',
+      },
+    },
+  },
+};
+
+export const HTMLContent: Story = {
+  args: {
+    rendering: {
+      componentName: 'RichText',
+      params: {
+        RenderingIdentifier: 'RichTextRenderingIdentifier',
+      },
+    },
+    params: {
+      styles: '',
+    },
+    fields: {
+      Text: {
+        value: '<p>This is a <strong>rich</strong> text content with <em>HTML</em> elements.</p>',
+      },
+    },
+  },
+};
