@@ -1,7 +1,7 @@
 // import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Default as RowSplitter } from 'src/components/RowSplitter';
-import ContentBlock from 'src/components/ContentBlock';
+// import ContentBlock from '../components/ContentBlock';
 
 const meta = {
   title: 'Components/RowSplitter',
