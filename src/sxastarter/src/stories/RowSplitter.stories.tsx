@@ -1,7 +1,6 @@
-// import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Default as RowSplitter } from 'src/components/RowSplitter';
-// import ContentBlock from '../components/ContentBlock';
+import { Default as ContentBlockDefaultStory } from './ContentBlock.stories';
 
 const meta = {
   title: 'Components/RowSplitter',
@@ -15,13 +14,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const placeholderComponent = {
+const placeholderChildComponent = {
   uid: 'anything',
-  componentName: 'ContentBlock',
-  dataSource: 'dataSourceValue',
+  ...ContentBlockDefaultStory.args.rendering,
   fields: {
-    heading: { value: 'Column Heading' },
-    content: { value: '<p>Column Content</p>' },
+    ...ContentBlockDefaultStory.args.fields,
   },
 };
 
@@ -33,13 +30,13 @@ export const Default: Story = {
         RenderingIdentifier: 'RowSplitterRenderingIdentifier',
       },
       placeholders: {
-        'row-1': [placeholderComponent],
-        'row-2': [placeholderComponent],
+        'row-placeholder1-{*}': [placeholderChildComponent],
+        'row-placeholder2-{*}': [placeholderChildComponent],
       },
     },
     params: {
       styles: '',
-      EnabledPlaceholders: '1,2',
+      EnabledPlaceholders: 'placeholder1,placeholder2',
     },
   },
 };
