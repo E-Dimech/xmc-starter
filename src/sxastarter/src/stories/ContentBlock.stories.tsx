@@ -1,5 +1,10 @@
+import {
+  LayoutServicePageState,
+  SitecoreContextReactContext,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import type { Meta, StoryObj } from '@storybook/react';
 import ContentBlock from 'src/components/ContentBlock';
+import { mockLayoutData } from '../../.storybook/preview';
 
 const meta = {
   title: 'Components/ContentBlock',
@@ -40,7 +45,7 @@ export const Default: Story = {
   },
 };
 
-export const EmptyFieldValues: Story = {
+export const EmptyContent: Story = {
   args: {
     ...commonArgs,
     fields: {
@@ -66,4 +71,37 @@ export const LongContent: Story = {
       },
     },
   },
+};
+
+export const NoDatasource: Story = {
+  args: {
+    ...Default.args,
+    rendering: {
+      ...commonArgs.rendering,
+      dataSource: '',
+    },
+  },
+};
+
+const noDatasourceInEditModeMockLayoutData = {
+  sitecore: {
+    ...mockLayoutData.sitecore,
+    context: {
+      pageEditing: true,
+      pageState: LayoutServicePageState.Edit,
+    },
+  },
+};
+
+export const NoDatasourceInEditMode: Story = {
+  args: {
+    ...NoDatasource.args,
+  },
+  decorators: [
+    (Story) => (
+      <SitecoreContextReactContext.Provider value={noDatasourceInEditModeMockLayoutData.sitecore}>
+        <Story />
+      </SitecoreContextReactContext.Provider>
+    ),
+  ],
 };
