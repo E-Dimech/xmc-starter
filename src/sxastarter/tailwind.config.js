@@ -12,6 +12,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        "brand-green": "#4DF69B",
+        "brand-amber": "#FF8656",
+        "brand-red": "#FF5656",
+        "brand-gray": "#7E7E7E",
+      },
       fontSize: {
         'xs': '.75rem',      // 12px
         'sm': '.875rem',     // 14px
