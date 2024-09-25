@@ -1,41 +1,55 @@
 import React from 'react';
-import { Link, RichText, Text, Image as JssImage, Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Link,
+  RichText,
+  Text,
+  Image as JssImage,
+  Field,
+  RichTextField,
+  LinkField,
+  ImageField,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 
-export interface HeroProps {
-  title: string;
-  bodyText: string;
-  backgroundImage?: string | Field<string>;
-  logoImage?: string | Field<string>;
-  ctaLabel: string;
-  ctaLink: string;
-  rounded: boolean;
+interface Fields {
+  title: RichTextField;
+  bodyText: RichTextField;
+  backgroundImage?: ImageField;
+  logoImage?: ImageField;
+  ctaLabel: Field<string>;
+  ctaLink: LinkField;
+  // rounded: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({
-  title,
-  bodyText,
-  backgroundImage,
-  logoImage,
-  ctaLabel,
-  ctaLink,
-  rounded,
-}) => {
+type HeroProps = {
+  params: { [key: string]: string };
+  fields: Fields;
+  // rounded: boolean;
+};
+
+const Hero = (props: HeroProps): JSX.Element => {
+  const isRounded = props.params?.rounded === 'true';
   return (
     <div
-      className={`relative bg-cover bg-center text-white ${rounded ? 'rounded-lg' : ''}`}
+      className="relative bg-cover bg-center text-white"
       style={{
         height: '400px',
         width: '800px',
       }}
     >
-      <JssImage
-        field={{ value: backgroundImage }}
-        alt="Background"
-        className="absolute inset-0 object-cover w-full h-full"
-      />
+      {/* Background Image */}
+      {props.fields.backgroundImage ? (
+        <JssImage
+          field={props.fields.backgroundImage}
+          alt="Background"
+          className={`absolute inset-0 object-cover w-full h-full ${isRounded ? 'rounded-lg' : ''}`}
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gray-300"></div>
+      )}
+
       {/* Transparent Overlay */}
       <div
-        className={`absolute inset-0 ${rounded ? 'rounded-lg' : ''}`}
+        className={`absolute inset-0 ${isRounded ? 'rounded-lg' : ''}`}
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           boxShadow: 'inset 0 0 0 12px rgba(255, 255, 255, 0.1)',
@@ -45,20 +59,19 @@ const Hero: React.FC<HeroProps> = ({
       {/* Text Content & Logo*/}
       <div className="relative z-10 flex flex-col justify-start items-start text-left pt-36 max-w-[25rem] mx-14">
         <JssImage
-          field={{ value: logoImage }}
+          field={props.fields.logoImage}
           alt="Logo"
           className="pb-2 w-48 h-48"
           style={{ marginBottom: '-3rem' }}
         />
         <div className="pl-3">
-          <RichText field={{ value: title }} className="text-4xl font-bold" />
-          <RichText field={{ value: bodyText }} className="text-lg pt-4" />
+          <RichText field={props.fields.title} className="text-4xl font-bold" />
+          <RichText field={props.fields.bodyText} className="text-lg pt-4" />
           <Link
-            field={{ value: ctaLink }}
-            href={ctaLink}
+            field={props.fields.ctaLink}
             className="inline-block text-white underline hover:no-underline"
           >
-            <Text field={{ value: ctaLabel }} />
+            <Text field={props.fields.ctaLabel} />
           </Link>
         </div>
       </div>
