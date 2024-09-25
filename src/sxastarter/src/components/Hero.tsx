@@ -1,11 +1,11 @@
 import React from 'react';
-import { StaticImageData } from 'next/image';
+import { Link, RichText, Text, Image as JssImage, Field } from '@sitecore-jss/sitecore-jss-nextjs';
 
 export interface HeroProps {
   title: string;
-  content: string;
-  backgroundImage?: string | StaticImageData;
-  logoImage?: string | StaticImageData;
+  bodyText: string;
+  backgroundImage?: string | Field<string>;
+  logoImage?: string | Field<string>;
   ctaLabel: string;
   ctaLink: string;
   rounded: boolean;
@@ -13,7 +13,7 @@ export interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({
   title,
-  content,
+  bodyText,
   backgroundImage,
   logoImage,
   ctaLabel,
@@ -24,13 +24,15 @@ const Hero: React.FC<HeroProps> = ({
     <div
       className={`relative bg-cover bg-center text-white ${rounded ? 'rounded-lg' : ''}`}
       style={{
-        backgroundImage: `url(${
-          typeof backgroundImage === 'string' ? backgroundImage : backgroundImage?.src
-        })`,
         height: '400px',
         width: '800px',
       }}
     >
+      <JssImage
+        field={{ value: backgroundImage }}
+        alt="Background"
+        className="absolute inset-0 object-cover w-full h-full"
+      />
       {/* Transparent Overlay */}
       <div
         className={`absolute inset-0 ${rounded ? 'rounded-lg' : ''}`}
@@ -41,21 +43,23 @@ const Hero: React.FC<HeroProps> = ({
       ></div>
 
       {/* Text Content & Logo*/}
-      <div className="relative z-10 flex flex-col justify-start items-start text-left py-32 max-w-[25rem] mx-14">
-        {logoImage && (
-          <img
-            src={typeof logoImage === 'string' ? logoImage : logoImage.src}
-            alt="Logo"
-            className="w-48 h-48"
-            style={{ marginBottom: '-3rem' }} // Negative margin to pull up the text
-          />
-        )}
+      <div className="relative z-10 flex flex-col justify-start items-start text-left pt-36 max-w-[25rem] mx-14">
+        <JssImage
+          field={{ value: logoImage }}
+          alt="Logo"
+          className="pb-2 w-48 h-48"
+          style={{ marginBottom: '-3rem' }}
+        />
         <div className="pl-3">
-          <h1 className="text-4xl font-bold">{title}</h1>
-          <p className="text-lg pt-4">{content}</p>
-          <a href={ctaLink} className="inline-block text-white underline hover:no-underline">
-            {ctaLabel}
-          </a>
+          <RichText field={{ value: title }} className="text-4xl font-bold" />
+          <RichText field={{ value: bodyText }} className="text-lg pt-4" />
+          <Link
+            field={{ value: ctaLink }}
+            href={ctaLink}
+            className="inline-block text-white underline hover:no-underline"
+          >
+            <Text field={{ value: ctaLabel }} />
+          </Link>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Meta, StoryObj } from '@storybook/react';
 import Hero from 'src/components/Hero';
 import fugi from '../assets/images/fugi.jpg';
@@ -18,8 +19,9 @@ type Story = StoryObj<typeof meta>;
 export const Square: Story = {
   args: {
     title: 'Sitecore Customer Data Platform',
-    content:
+    bodyText:
       'With our platform expertise and Sitecore CDP up-to-the-minute business intelligence we can do things.',
+    // @ts-ignore: Ignore TypeScript error for StaticImageData
     backgroundImage: fugi,
     logoImage: sitecoreLogo,
     ctaLabel: 'Learn more',
@@ -31,8 +33,9 @@ export const Square: Story = {
 export const Round: Story = {
   args: {
     title: 'Sitecore Customer Data Platform',
-    content:
+    bodyText:
       'With our platform expertise and Sitecore CDP up-to-the-minute business intelligence we can do things.',
+    // @ts-ignore: Ignore TypeScript error for StaticImageData
     backgroundImage: fugi,
     logoImage: sitecoreLogo,
     ctaLabel: 'Learn more',
