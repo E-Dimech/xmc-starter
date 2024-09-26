@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Hero from 'src/components/Hero';
+import { Default as Hero } from 'src/components/Hero';
 import fugi from '../assets/images/fugi.jpg';
 import sitecoreLogo from '../assets/images/sitecoreLogo.svg';
 
@@ -36,15 +36,15 @@ export const Square: Story = {
   args: {
     params: { rounded: 'false' },
     fields: {
-      title: { value: 'Sitecore Customer Data Platform' },
-      bodyText: {
+      Title: { value: 'Sitecore Customer Data Platform' },
+      BodyText: {
         value:
           'With our platform expertise and Sitecore CDP up-to-the-minute business intelligence we can do things.',
       },
-      backgroundImage: mockImageField(fugi.src, 'Background'),
-      logoImage: mockImageField(sitecoreLogo.src, 'Logo'),
-      ctaLabel: { value: 'Learn more' },
-      ctaLink: mockLinkField('https://screamscape.com/', 'Learn more'),
+      BackgroundImage: mockImageField(fugi.src, 'Background'),
+      LogoImage: mockImageField(sitecoreLogo.src, 'Logo'),
+      CTALabel: { value: 'Learn more' },
+      CTALink: mockLinkField('https://screamscape.com/', 'Learn more'),
     },
   },
 };
@@ -53,15 +53,15 @@ export const Round: Story = {
   args: {
     params: { rounded: 'true' },
     fields: {
-      title: { value: 'Sitecore Customer Data Platform' },
-      bodyText: {
+      Title: { value: 'Sitecore Customer Data Platform' },
+      BodyText: {
         value:
           'With our platform expertise and Sitecore CDP up-to-the-minute business intelligence we can do things.',
       },
-      backgroundImage: mockImageField(fugi.src, 'Background'),
-      logoImage: mockImageField(sitecoreLogo.src, 'Logo'),
-      ctaLabel: { value: 'Learn more' },
-      ctaLink: mockLinkField('https://screamscape.com/', 'Learn more'),
+      BackgroundImage: mockImageField(fugi.src, 'Background'),
+      LogoImage: mockImageField(sitecoreLogo.src, 'Logo'),
+      CTALabel: { value: 'Learn more' },
+      CTALink: mockLinkField('https://screamscape.com/', 'Learn more'),
     },
   },
 };

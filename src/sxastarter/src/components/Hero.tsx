@@ -11,12 +11,12 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
-  title: RichTextField;
-  bodyText: RichTextField;
-  backgroundImage?: ImageField;
-  logoImage?: ImageField;
-  ctaLabel: Field<string>;
-  ctaLink: LinkField;
+  Title: RichTextField;
+  BodyText: RichTextField;
+  BackgroundImage?: ImageField;
+  LogoImage?: ImageField;
+  CTALabel: Field<string>;
+  CTALink: LinkField;
   // rounded: boolean;
 }
 
@@ -26,57 +26,47 @@ type HeroProps = {
   // rounded: boolean;
 };
 
-const Hero = (props: HeroProps): JSX.Element => {
+export const Default = (props: HeroProps): JSX.Element => {
   const isRounded = props.params?.rounded === 'true';
+  const backgroundImageUrl = props.fields?.BackgroundImage?.value?.src;
+
   return (
     <div
-      className="relative bg-cover bg-center text-white"
+      className={`relative bg-cover bg-no-repeat h-[400px] w-screen bg-center text-white ${
+        isRounded ? 'rounded-lg' : ''
+      }`}
       style={{
-        height: '400px',
-        width: '800px',
+        backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'none',
       }}
     >
-      {/* Background Image */}
-      {props.fields.backgroundImage ? (
-        <JssImage
-          field={props.fields.backgroundImage}
-          alt="Background"
-          className={`absolute inset-0 object-cover w-full h-full ${isRounded ? 'rounded-lg' : ''}`}
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gray-300"></div>
-      )}
-
       {/* Transparent Overlay */}
       <div
         className={`absolute inset-0 ${isRounded ? 'rounded-lg' : ''}`}
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          boxShadow: 'inset 0 0 0 12px rgba(255, 255, 255, 0.1)',
+          boxShadow: 'inset 0 0 0 16px rgba(255, 255, 255, 0.1)',
         }}
       ></div>
 
       {/* Text Content & Logo*/}
       <div className="relative z-10 flex flex-col justify-start items-start text-left pt-36 max-w-[25rem] mx-14">
         <JssImage
-          field={props.fields.logoImage}
+          field={props.fields?.LogoImage}
           alt="Logo"
-          className="pb-2 w-48 h-48"
-          style={{ marginBottom: '-3rem' }}
+          style={{ width: '130px', marginBottom: '-3rem', paddingBottom: '.5rem' }}
+          // className="pb-2 w-24 h-24 mb-[-3rem]"
         />
         <div className="pl-3">
-          <RichText field={props.fields.title} className="text-4xl font-bold" />
-          <RichText field={props.fields.bodyText} className="text-lg pt-4" />
+          <RichText field={props.fields?.Title} className="text-4xl font-bold" />
+          <RichText field={props.fields?.BodyText} className="text-lg py-3" />
           <Link
-            field={props.fields.ctaLink}
+            field={props.fields?.CTALink}
             className="inline-block text-white underline hover:no-underline"
           >
-            <Text field={props.fields.ctaLabel} />
+            <Text field={props.fields?.CTALabel} />
           </Link>
         </div>
       </div>
     </div>
   );
 };
-
-export default Hero;
