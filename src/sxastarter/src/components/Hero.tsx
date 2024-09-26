@@ -34,27 +34,20 @@ export const Default = (props: HeroProps): JSX.Element => {
         isRounded ? 'rounded-lg' : ''
       }`}
       style={{
-        backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl}?quality=90)` : 'none',
+        backgroundImage: `url(${backgroundImageUrl}?quality=90)`,
       }}
     >
       {/* Transparent Overlay */}
       <div
-        className={`absolute inset-0 ${isRounded ? 'rounded-lg' : ''}`}
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          boxShadow: 'inset 0 0 0 16px rgba(255, 255, 255, 0.1)',
-        }}
+        className={`absolute inset-0 shadow-custom-inset bg-black bg-opacity-50 ${
+          isRounded ? 'rounded-lg' : ''
+        }`}
       ></div>
 
       {/* Text Content & Logo*/}
       <div className="relative z-10 flex flex-col justify-start items-start text-left pt-36 max-w-[25rem] mx-14">
-        <JssImage
-          field={props.fields?.LogoImage}
-          alt="Logo"
-          style={{ width: '130px', marginBottom: '-3rem', paddingBottom: '.5rem' }}
-          // className="pb-2 w-32 mb-[-3rem]"
-        />
-        <div className="pl-3" style={{ paddingLeft: '0.75rem' }}>
+        <JssImage field={props.fields?.LogoImage} alt="Logo" className="pb-2 w-52 mb-[-3rem]" />
+        <div className="pl-3">
           <RichText field={props.fields?.Title} className="text-4xl font-bold" />
           <RichText field={props.fields?.BodyText} className="text-lg py-3" />
           <Link
