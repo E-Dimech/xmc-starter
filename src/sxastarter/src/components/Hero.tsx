@@ -17,17 +17,15 @@ interface Fields {
   LogoImage?: ImageField;
   CTALabel: Field<string>;
   CTALink: LinkField;
-  // rounded: boolean;
 }
 
 type HeroProps = {
   params: { [key: string]: string };
   fields: Fields;
-  // rounded: boolean;
 };
 
 export const Default = (props: HeroProps): JSX.Element => {
-  const isRounded = props.params?.rounded === 'true';
+  const isRounded = props.params?.RoundedCorners === '1';
   const backgroundImageUrl = props.fields?.BackgroundImage?.value?.src;
 
   return (
@@ -36,7 +34,7 @@ export const Default = (props: HeroProps): JSX.Element => {
         isRounded ? 'rounded-lg' : ''
       }`}
       style={{
-        backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'none',
+        backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl}?quality=90)` : 'none',
       }}
     >
       {/* Transparent Overlay */}
@@ -54,9 +52,9 @@ export const Default = (props: HeroProps): JSX.Element => {
           field={props.fields?.LogoImage}
           alt="Logo"
           style={{ width: '130px', marginBottom: '-3rem', paddingBottom: '.5rem' }}
-          // className="pb-2 w-24 h-24 mb-[-3rem]"
+          // className="pb-2 w-32 mb-[-3rem]"
         />
-        <div className="pl-3">
+        <div className="pl-3" style={{ paddingLeft: '0.75rem' }}>
           <RichText field={props.fields?.Title} className="text-4xl font-bold" />
           <RichText field={props.fields?.BodyText} className="text-lg py-3" />
           <Link
