@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Default as Card } from 'src/components/Card';
+import { Default as NewsCard } from 'src/components/NewsCard';
 import topthrill from '../assets/images/topthrill.jpg';
 
 const meta = {
-  title: 'Components/Card',
-  component: Card,
+  title: 'Components/NewsCard',
+  component: NewsCard,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Card>;
+} satisfies Meta<typeof NewsCard>;
 
 export default meta;
 
@@ -22,7 +22,7 @@ const mockImageField = (src: string, alt: string) => ({
   },
 });
 
-export const Square: Story = {
+export const Default: Story = {
   args: {
     params: { rounded: 'false' },
     fields: {
