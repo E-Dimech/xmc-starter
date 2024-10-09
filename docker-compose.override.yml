@@ -1,5 +1,4 @@
 services:
-
   # A Windows-based nodejs base image
   nodejs:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
@@ -35,7 +34,12 @@ services:
       - "traefik.http.routers.rendering-secure.entrypoints=websecure"
       - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
       - "traefik.http.routers.rendering-secure.tls=true"
-
+      # BEGIN CUSTOMIZATION - Add CORS headers to fix CORS issues in Experience Editor with Next.js 12.2 and newer
+      - "traefik.http.middlewares.rendering-headers.headers.accesscontrolallowmethods=GET,POST,OPTIONS"
+      - "traefik.http.middlewares.rendering-headers.headers.accesscontrolallowheaders=Content-Type"
+      - "traefik.http.middlewares.rendering-headers.headers.accesscontrolalloworiginlist=https://${CM_HOST}"
+      - "traefik.http.routers.rendering-secure.middlewares=rendering-headers"
+      # END CUSTOMIZATION
   # Mount the Traefik configuration and certs.
   traefik:
     volumes:
@@ -60,16 +64,16 @@ services:
         target: c:\data
 
   # id:
-  #   image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest} 
+  #   image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest}
   #   build:
   #     context: ./docker/build/id
   #     args:
   #       PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-id:${SITECORE_VERSION}
-      # volumes:
-      #   - ${HOST_LICENSE_FOLDER}:c:\license
-      # environment:
-      #   SITECORE_LICENSE_LOCATION: c:\license\license.xml
-      #   Sitecore_Sitecore__IdentityServer__Clients__MyProjectDevelopment__ClientSecrets__ClientSecret1: ${MYPROJECT_DEPLOYMENT_SECRET}
+  # volumes:
+  #   - ${HOST_LICENSE_FOLDER}:c:\license
+  # environment:
+  #   SITECORE_LICENSE_LOCATION: c:\license\license.xml
+  #   Sitecore_Sitecore__IdentityServer__Clients__MyProjectDevelopment__ClientSecrets__ClientSecret1: ${MYPROJECT_DEPLOYMENT_SECRET}
 
   # Use our custom CM image with added modules and solution code.
   # Folders are mounted below for code deployment and log output. See Dockerfile for details.
