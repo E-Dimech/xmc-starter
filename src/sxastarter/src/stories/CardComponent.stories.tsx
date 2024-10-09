@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Default as CardComponent } from 'src/components/CardComponent';
+import CardComponentTemplate from 'src/components/CardComponentTemplate';
 import topthrill from '../assets/images/topthrill.jpg';
 
 const meta = {
-  title: 'Components/CardComponent',
-  component: CardComponent,
+  title: 'Components/CardComponentTemplate',
+  component: CardComponentTemplate,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof CardComponent>;
+} satisfies Meta<typeof CardComponentTemplate>;
 
 export default meta;
 
@@ -32,41 +32,45 @@ const mockLinkField = (href: string, text: string) => ({
 
 export const Default: Story = {
   args: {
+    fields: {
+      Title: { value: 'Cards Section' },
+      Description: { value: 'Here is a collection of our top rides' },
+    },
     cards: [
       {
-        params: {}, // Params for first card
+        params: {}, // first card
         fields: {
-          CardTitle: { value: 'Top Thrill 2 Update' },
-          CardBody: {
+          cardTitle: { value: 'Top Thrill 2 Update' },
+          cardBody: {
             value: 'We appreciate your patience',
           },
-          CardImage: mockImageField(topthrill.src, 'TopThrill2'),
-          CardLink: mockLinkField('https://topthrill.com/', 'Top Thrill 2'),
-          CardButtonText: { value: 'Learn more' },
+          cardImage: mockImageField(topthrill.src, 'TopThrill2'),
+          cardLink: mockLinkField('https://topthrill.com/', 'Top Thrill 2'),
+          cardButtonText: { value: 'Learn more' },
         },
       },
       {
-        params: {}, // Params for second card
+        params: {}, // second card
         fields: {
-          CardTitle: { value: 'Steel Vengeance' },
-          CardBody: {
+          cardTitle: { value: 'Steel Vengeance' },
+          cardBody: {
             value: 'The wildest ride in the West.',
           },
-          CardImage: mockImageField(topthrill.src, 'SteelVengeance'),
-          CardLink: mockLinkField('https://steelvengeance.com/', 'Steel Vengeance'),
-          CardButtonText: { value: 'Explore Ride' },
+          cardImage: mockImageField(topthrill.src, 'SteelVengeance'),
+          cardLink: mockLinkField('https://steelvengeance.com/', 'Steel Vengeance'),
+          cardButtonText: { value: 'Explore Ride' },
         },
       },
       {
-        params: {}, // Params for third card
+        params: {}, // third card
         fields: {
-          CardTitle: { value: 'Millennium Force' },
-          CardBody: {
+          cardTitle: { value: 'Millennium Force' },
+          cardBody: {
             value: 'A force to be reckoned with.',
           },
-          CardImage: mockImageField(topthrill.src, 'MillenniumForce'),
-          CardLink: mockLinkField('https://millenniumforce.com/', 'Millennium Force'),
-          CardButtonText: { value: 'Join the Force' },
+          cardImage: mockImageField(topthrill.src, 'MillenniumForce'),
+          cardLink: mockLinkField('https://millenniumforce.com/', 'Millennium Force'),
+          cardButtonText: { value: 'Join the Force' },
         },
       },
     ],
