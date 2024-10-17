@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CarouselComponent from 'src/components/CarouselComponent';
+import Carousel from 'src/components/Carousel';
 import force from '../assets/images/force.jpg';
 import helix from '../assets/images/helix.jpg';
 import alpenFury from '../assets/images/alpenFury.jpg';
 
 const meta = {
-  title: 'Components/CarouselComponent',
-  component: CarouselComponent,
+  title: 'Components/Carousel',
+  component: Carousel,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof CarouselComponent>;
+} satisfies Meta<typeof Carousel>;
 
 export default meta;
 
@@ -30,27 +30,27 @@ export const Default: Story = {
       slides: [
         {
           slideImage: mockImageField(force.src, 'Force'),
-          slideAltText: {
-            value: 'Force',
-          },
+          // slideAltText: {
+          //   value: 'Force',
+          // },
           slideCaption: {
             value: 'Millennium Force',
           },
         },
         {
           slideImage: mockImageField(helix.src, 'Helix'),
-          slideAltText: {
-            value: 'Helix',
-          },
+          // slideAltText: {
+          //   value: 'Helix',
+          // },
           slideCaption: {
             value: 'Helix',
           },
         },
         {
           slideImage: mockImageField(alpenFury.src, 'Alpen Fury'),
-          slideAltText: {
-            value: 'Alpen Fury',
-          },
+          // slideAltText: {
+          //   value: 'Alpen Fury',
+          // },
           slideCaption: {
             value: 'Alpen Fury',
           },
