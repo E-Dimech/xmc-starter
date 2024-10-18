@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-import { ImageField, Field, Text, Image } from '@sitecore-jss/sitecore-jss-nextjs';
-
-interface SlideFields {
-  slideImage: ImageField;
-  slideAltText: Field<string>;
-  slideCaption: Field<string>;
-}
+import CarouselSlide from './CarouselSlide';
+import { CarouselSlideProps } from './CarouselSlide';
 
 export type CarouselProps = {
   fields: {
-    slides: SlideFields[];
+    slides: CarouselSlideProps['fields'][];
   };
 };
 
-const CarouselComponent = ({ fields }: CarouselProps) => {
+const CarouselComponent = ({ fields }: CarouselProps): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = fields?.slides || [];
 
@@ -33,23 +28,7 @@ const CarouselComponent = ({ fields }: CarouselProps) => {
     <div className="carousel-container relative max-w-4xl mx-auto">
       {slides.length > 0 && (
         <>
-          <div className="carousel-slide relative min-w-[525px] h-96 overflow-hidden">
-            {slides[currentIndex].slideImage && (
-              <Image
-                field={slides[currentIndex].slideImage}
-                alt={slides[currentIndex].slideAltText.value}
-                className="w-full h-full object-cover rounded-lg shadow-md"
-              />
-            )}
-            {slides[currentIndex].slideCaption && (
-              <div className="absolute top-4 left-4 bg-slate-400 bg-opacity-30 text-white p-2 rounded">
-                <Text
-                  field={slides[currentIndex].slideCaption}
-                  className="text-sm md:text-lg font-semibold"
-                />
-              </div>
-            )}
-          </div>
+          <CarouselSlide fields={slides[currentIndex]} params={{}} />
 
           {/* Navigation Controls */}
           <button

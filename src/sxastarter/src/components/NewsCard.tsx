@@ -24,7 +24,7 @@ export const Default = (props: NewsCardProps): JSX.Element => {
   // const isRounded = props.params?.RoundedCorners === '1';
 
   return (
-    <div className="flex border-5 border-cyan-500 rounded-lg overflow-hidden">
+    <div className="flex border-5 border-cyan-500 rounded-lg overflow-hidden m-20">
       {/* Image occupying 50%, no gap, with rounded left corners matching the card */}
       <div className="w-1/2 flex-shrink-0 overflow-hidden">
         <JssImage
@@ -36,7 +36,7 @@ export const Default = (props: NewsCardProps): JSX.Element => {
 
       {/* Content occupying 50%, left-aligned and vertically centered */}
       <div className="w-1/2 flex flex-col justify-center items-start bg-cyan-100 pl-10">
-        <div className="text-2xl py-2">
+        <div className="text-4xl py-2">
           <Text field={props.fields?.Title} />
         </div>
         <RichText field={props.fields?.Headline} className="text-3xl font-bold py-2" />
