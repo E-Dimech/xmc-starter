@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ArticleContainer } from 'src/components/ArticleContainer';
+import { Default as ArticleContainer } from 'src/components/ArticleContainer';
 import topthrill from '../assets/images/topthrill.jpg';
 import force from '../assets/images/force.jpg';
 import alpenfury from '../assets/images/alpenFury.jpg';
