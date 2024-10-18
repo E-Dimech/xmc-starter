@@ -12,14 +12,16 @@ type ArticleContainerProps = {
   fields: Fields;
 };
 
-export const ArticleContainer = (props: ArticleContainerProps): JSX.Element => {
+export const Default = (props: ArticleContainerProps): JSX.Element => {
   return (
-    <div className="bg-gray-100 rounded-lg p-6">
+    <div className="bg-gray-100 rounded-lg p-6 w-full max-w-screen-2xl mx-auto mb-20">
       {/* Title */}
-      <Text field={props.fields?.Title} className="text-center text-4xl font-bold mb-6" />
+      <div className="text-4xl font-bold pl-2 my-10">
+        <Text field={props.fields?.Title} />
+      </div>
 
       {/* Articles Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {props.fields.Articles?.map((article, index) => (
           <div key={index} className="p-2 flex">
             <Article fields={article.fields} params={{}} />

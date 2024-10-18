@@ -27,7 +27,10 @@ export const Default = (props: CoasterArticleProps): JSX.Element => {
   return (
     <div className="card flex flex-col items-center border-2 border-black rounded-lg p-4 w-full h-full">
       {/* Card image */}
-      <Image field={props.fields?.Image} className="w-full h-48 object-cover rounded-t-lg" />
+      <Image
+        field={props.fields?.Image}
+        className="w-full h-48 lg:h-72 object-cover rounded-t-lg"
+      />
 
       {/* Card content */}
       <div className="card-content flex flex-col justify-between flex-grow p-4 text-center">
