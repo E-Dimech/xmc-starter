@@ -38,7 +38,7 @@ export const Default = (props: CoasterArticleProps): JSX.Element => {
         <RichText field={props.fields?.Description} className="text-xl mb-4 flex-grow" />
         <Link
           field={props.fields?.ButtonLink}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg no-underline"
           target="_blank"
           rel="noopener noreferrer"
         >
