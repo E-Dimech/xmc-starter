@@ -30,7 +30,7 @@ export const Default = (props: HeroProps): JSX.Element => {
 
   return (
     <div
-      className={`relative bg-cover bg-no-repeat h-[400px] w-screen bg-center text-white ${
+      className={`relative bg-cover bg-no-repeat h-[400px] w-screen bg-center text-white mb-20 ${
         isRounded ? 'rounded-lg' : ''
       }`}
       style={{

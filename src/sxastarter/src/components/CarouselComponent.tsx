@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import CarouselSlide from './CarouselSlide';
-import { CarouselSlideProps } from './CarouselSlide';
+import { ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
 
-export type CarouselProps = {
-  fields: {
-    slides: CarouselSlideProps['fields'][];
-  };
+import { Default as CarouselSlide, CarouselSlideProps } from './CarouselSlide';
+
+interface Fields {
+  Slides: CarouselSlideProps[];
+}
+type CarouselProps = {
+  rendering: ComponentRendering;
+  fields: Fields;
 };
 
-const CarouselComponent = ({ fields }: CarouselProps): JSX.Element => {
+export const Default = (props: CarouselProps): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const slides = fields?.slides || [];
+  const slides = props.fields.Slides || [];
 
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -25,10 +28,10 @@ const CarouselComponent = ({ fields }: CarouselProps): JSX.Element => {
   };
 
   return (
-    <div className="carousel-container relative max-w-4xl mx-auto">
+    <div className="carousel-container relative max-w-4xl mx-auto mb-20">
       {slides.length > 0 && (
         <>
-          <CarouselSlide fields={slides[currentIndex]} params={{}} />
+          <CarouselSlide fields={slides[currentIndex].fields} params={{}} />
 
           {/* Navigation Controls */}
           <button
@@ -61,5 +64,3 @@ const CarouselComponent = ({ fields }: CarouselProps): JSX.Element => {
     </div>
   );
 };
-
-export default CarouselComponent;
