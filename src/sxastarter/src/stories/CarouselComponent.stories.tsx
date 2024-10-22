@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CarouselComponent from 'src/components/CarouselComponent';
+import { Default as CarouselComponent } from 'src/components/CarouselComponent';
 import force from '../assets/images/force.jpg';
 import helix from '../assets/images/helix.jpg';
 import alpenFury from '../assets/images/alpenFury.jpg';
+import { ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs'; // Mock the ComponentRendering type
 
 const meta = {
   title: 'Components/CarouselComponent',
@@ -24,26 +25,40 @@ const mockImageField = (src: string, alt: string) => ({
   },
 });
 
+const mockTextField = (value: string) => ({
+  value,
+});
+
+const mockRendering: ComponentRendering = {
+  componentName: 'CarouselComponent',
+  dataSource: '/sitecore/content/carousel',
+  placeholders: {},
+};
+
 export const Default: Story = {
   args: {
+    rendering: mockRendering,
     fields: {
-      slides: [
+      Slides: [
         {
-          SlideImage: mockImageField(force.src, 'Force'),
-          SlideCaption: {
-            value: 'Millennium Force',
+          params: {},
+          fields: {
+            SlideImage: mockImageField(force.src, 'Force'),
+            SlideCaption: mockTextField('Millennium Force'),
           },
         },
         {
-          SlideImage: mockImageField(helix.src, 'Helix'),
-          SlideCaption: {
-            value: 'Helix',
+          params: {},
+          fields: {
+            SlideImage: mockImageField(helix.src, 'Helix'),
+            SlideCaption: mockTextField('Helix'),
           },
         },
         {
-          SlideImage: mockImageField(alpenFury.src, 'Alpen Fury'),
-          SlideCaption: {
-            value: 'Alpen Fury',
+          params: {},
+          fields: {
+            SlideImage: mockImageField(alpenFury.src, 'Alpen Fury'),
+            SlideCaption: mockTextField('Alpen Fury'),
           },
         },
       ],
