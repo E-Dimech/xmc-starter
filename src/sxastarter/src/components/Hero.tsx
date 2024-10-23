@@ -30,7 +30,7 @@ export const Default = (props: HeroProps): JSX.Element => {
 
   return (
     <div
-      className={`relative bg-cover bg-no-repeat h-[400px] w-screen bg-center text-white mb-20 ${
+      className={`relative bg-cover bg-no-repeat h-[500px] w-screen bg-center text-white mb-20 ${
         isRounded ? 'rounded-lg' : ''
       }`}
       style={{
@@ -49,10 +49,10 @@ export const Default = (props: HeroProps): JSX.Element => {
         <JssImage field={props.fields?.LogoImage} alt="Logo" className="pb-2 w-52 mb-6" />
         <div className="pl-3">
           <RichText field={props.fields?.Title} className="text-4xl font-bold" />
-          <RichText field={props.fields?.BodyText} className="text-lg py-3" />
+          <RichText field={props.fields?.BodyText} className="text-2xl py-3" />
           <Link
             field={props.fields?.CTALink}
-            className="inline-block text-white underline hover:no-underline"
+            className="inline-block text-white no-underline hover:underline"
           >
             <Text field={props.fields?.CTALabel} />
           </Link>
