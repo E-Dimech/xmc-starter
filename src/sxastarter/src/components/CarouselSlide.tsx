@@ -13,7 +13,7 @@ export type CarouselSlideProps = {
 
 export const Default = (props: CarouselSlideProps): JSX.Element => {
   return (
-    <div className="carousel-slide relative min-w-[525px] h-96 overflow-hidden">
+    <div className="carousel-slide relative h-[350px] md:h-[450px] lg:h-[550px] overflow-hidden">
       {props.fields?.SlideImage && (
         <Image
           field={props.fields?.SlideImage}

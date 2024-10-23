@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
-
 import { Default as CarouselSlide, CarouselSlideProps } from './CarouselSlide';
 
 interface Fields {
   Slides: CarouselSlideProps[];
 }
+
 type CarouselProps = {
   rendering: ComponentRendering;
   fields: Fields;
@@ -28,7 +28,7 @@ export const Default = (props: CarouselProps): JSX.Element => {
   };
 
   return (
-    <div className="carousel-container relative max-w-4xl mx-auto mb-20">
+    <div className="carousel-container relative w-full mb-20 md:mx-28">
       {slides.length > 0 && (
         <>
           <CarouselSlide fields={slides[currentIndex].fields} params={{}} />
@@ -36,13 +36,13 @@ export const Default = (props: CarouselProps): JSX.Element => {
           {/* Navigation Controls */}
           <button
             onClick={goToPreviousSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
+            className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full z-10"
           >
             &#9664;
           </button>
           <button
             onClick={goToNextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
+            className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full z-10"
           >
             &#9654;
           </button>
