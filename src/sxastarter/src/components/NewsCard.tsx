@@ -21,26 +21,29 @@ type NewsCardProps = {
 };
 
 export const Default = (props: NewsCardProps): JSX.Element => {
-  // const isRounded = props.params?.RoundedCorners === '1';
-
   return (
-    <div className="flex border-5 border-cyan-500 rounded-lg overflow-hidden m-20">
-      {/* Image occupying 50%, no gap, with rounded left corners matching the card */}
-      <div className="w-1/2 flex-shrink-0 overflow-hidden">
-        <JssImage
-          field={props.fields?.CardImage}
-          alt="Card Image"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Content occupying 50%, left-aligned and vertically centered */}
-      <div className="w-1/2 flex flex-col justify-center items-start bg-cyan-100 pl-10">
-        <div className="text-4xl py-2">
-          <Text field={props.fields?.Title} />
+    <div className="w-full px-10">
+      <div className="flex flex-col md:flex-row rounded-lg overflow-hidden my-20 mx-auto">
+        {/* Image section - occupies 100% width on smaller screens, 50% on larger screens */}
+        <div className="w-full md:w-1/2 flex-shrink-0 overflow-hidden">
+          <JssImage
+            field={props.fields?.CardImage}
+            alt="Card Image"
+            className="w-full h-full object-cover"
+          />
         </div>
-        <RichText field={props.fields?.Headline} className="text-3xl font-bold py-2" />
-        <RichText field={props.fields?.Author} className="text-xl py-2" />
+
+        {/* Content section - occupies 100% width on smaller screens, 50% on larger screens */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-start bg-[#001f3f] p-6 md:p-10">
+          <div className="text-2xl md:text-4xl py-2 text-[#66e0ff]">
+            <Text field={props.fields?.Title} />
+          </div>
+          <RichText
+            field={props.fields?.Headline}
+            className="text-xl md:text-3xl font-bold py-2 text-gray-300"
+          />
+          <RichText field={props.fields?.Author} className="text-lg md:text-xl py-2 text-white" />
+        </div>
       </div>
     </div>
   );
