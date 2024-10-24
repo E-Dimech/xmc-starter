@@ -21,7 +21,7 @@ export const Default = (props: CarouselSlideProps): JSX.Element => {
         />
       )}
       {props.fields?.SlideCaption && (
-        <div className="absolute top-4 left-4 bg-slate-400 bg-opacity-30 text-white p-2 rounded">
+        <div className="absolute top-4 left-4 bg-slate-400 bg-opacity-30 text-black p-2 rounded">
           <Text field={props.fields?.SlideCaption} className="text-sm md:text-lg font-semibold" />
         </div>
       )}
