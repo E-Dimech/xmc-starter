@@ -3,7 +3,7 @@ import {
   SitecoreContextReactContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import type { Meta, StoryObj } from '@storybook/react';
-import ContentBlock from 'src/components/ContentBlock';
+import ContentBlock from 'src/components/Startup/ContentBlock';
 import { mockLayoutData } from '../../.storybook/preview';
 
 const meta = {
