@@ -45,7 +45,7 @@ export const Default = (props: HeroProps): JSX.Element => {
       ></div>
 
       {/* Text Content & Logo*/}
-      <div className="relative z-10 flex flex-col justify-start items-start text-left pt-36 max-w-[25rem] mx-14">
+      <div className="relative flex flex-col justify-start items-start text-left pt-36 max-w-[25rem] mx-14">
         <JssImage field={props.fields?.LogoImage} alt="Logo" className="pb-2 w-52 mb-6" />
         <div className="pl-3">
           <RichText field={props.fields?.Title} className="text-4xl font-bold" />
