@@ -15,7 +15,7 @@ interface Fields {
   Description: RichTextField;
   Image: ImageField;
   ButtonLink: LinkField;
-  ButtonText: Field<string>;
+  // ButtonText: Field<string>;
 }
 
 export type CoasterArticleProps = {
@@ -42,7 +42,7 @@ export const Default = (props: CoasterArticleProps): JSX.Element => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Text field={props.fields?.ButtonText} />
+          {/* <Text field={props.fields?.ButtonText} /> */}
         </Link>
       </div>
     </div>
